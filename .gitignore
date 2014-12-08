@@ -1,7 +1,9 @@
 *.exe
 /qntm.org/
-/files/
 
-/qntm.html
+/out/
+/qntm.opf
 /toc.xhtml
 /toc.ncx
+
+/qntm.mobi
