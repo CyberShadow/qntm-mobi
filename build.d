@@ -170,7 +170,7 @@ void genOPF()
 	opf.writeln(`    <dc:title>Things of Interest</dc:title>`);
 	opf.writeln(`    <dc:language>en</dc:language>`);
 	opf.writeln(`    <dc:creator opf:file-as="Hughes, Sam" opf:role="aut">Sam Hughes</dc:creator>`);
-	opf.writeln(`    <dc:creator opf:file-as="Panteleev, Vladimir" opf:role="red">Vladimir Panteleev</dc:creator>`);
+//	opf.writeln(`    <dc:creator opf:file-as="Panteleev, Vladimir" opf:role="red">Vladimir Panteleev</dc:creator>`);
 	opf.writeln(`    <dc:description>qntm.org in eBook format</dc:description>`);
 	auto t = Clock.currTime();
 	opf.writeln(`    <dc:date>`, "%04d-%02d-%02d".format(t.year, t.month, t.day), `</dc:date>`);
