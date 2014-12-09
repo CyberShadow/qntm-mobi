@@ -25,6 +25,7 @@ struct Page
 
 Page[string] pages;
 ref Page getPage(string id) { if (auto p = id in pages) return *p; pages[id] = Page(); return pages[id]; }
+string[] extraFiles;
 
 void main()
 {
@@ -39,9 +40,9 @@ void main()
 		}
 	}
 
+	copyDir("files");
 	genNav();
 	genOPF();
-	copyDir("files");
 }
 
 void scan(string id)
@@ -185,6 +186,8 @@ void genOPF()
 	opf.writeln(`    <item id="cimage" href="cover/cover.jpeg" media-type="image/jpeg" properties="cover-image" />`);
 	foreach (id; pageOrder)
 	opf.writeln(`    <item id="qntm-`, id, `" href="out/`, id, `.html" media-type="application/xhtml+xml"/>`);
+	foreach (path; extraFiles)
+	opf.writeln(`    <item id="qntmfiles-`, path.stripExtension.replace("/", "-"), `" href="out/`, path, `" media-type="application/xhtml+xml"/>`);
 	opf.writeln(`  </manifest>`);
 	opf.writeln();
 
@@ -216,6 +219,8 @@ void copyDir(string dir)
 		{
 			if (de.extension.toLower.isOneOf(".jpg", ".jpeg", ".png", ".gif", ".htm", ".html"))
 				copy(de, buildPath("out", dir, de.baseName));
+			if (de.extension.toLower.isOneOf(".htm", ".html"))
+				extraFiles ~= dir ~ "/" ~ de.baseName;
 		}
 		else
 		{
