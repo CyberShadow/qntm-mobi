@@ -174,6 +174,7 @@ void genOPF()
 	opf.writeln(`    <dc:description>qntm.org in eBook format</dc:description>`);
 	auto t = Clock.currTime();
 	opf.writeln(`    <dc:date>`, "%04d-%02d-%02d".format(t.year, t.month, t.day), `</dc:date>`);
+	opf.writeln(`    <meta name="cover" content="cimage" />`);
 	opf.writeln(`  </metadata>`);
 	opf.writeln();
 
@@ -181,7 +182,7 @@ void genOPF()
 	opf.writeln(`    <item id="tc" href="toc.xhtml" media-type="application/xhtml+xml"/>`);
 	opf.writeln(`    <item id="stylesheet" href="style.css" media-type="text/css"/>`);
 	opf.writeln(`    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>  `);
-	opf.writeln(`    <item id="cimage" href="cover/cover.png" media-type="image/png" properties="cover-image" />`);
+	opf.writeln(`    <item id="cimage" href="cover/cover.jpeg" media-type="image/jpeg" properties="cover-image" />`);
 	foreach (id; pageOrder)
 	opf.writeln(`    <item id="qntm-`, id, `" href="out/`, id, `.html" media-type="application/xhtml+xml"/>`);
 	opf.writeln(`  </manifest>`);
