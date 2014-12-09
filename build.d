@@ -29,6 +29,9 @@ string[] extraFiles;
 
 void main()
 {
+	if ("out".exists)
+		rmdirRecurse("out");
+
 	queue = [null];
 	while (queue.length)
 	{
@@ -90,6 +93,7 @@ void scan(string id)
 		.replaceAll(reRSS, ``)
 	;
 
+	mkdirRecurse("out");
 	auto result = File("out/" ~ id ~ ".html", "wb");
 	result.writeln(`<html>`);
 	result.writeln(`<head>`);
